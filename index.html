@@ -64,12 +64,21 @@
       <div class="outputs">
         <!-- search-Blok -->
         <div class="search-Blok">
-          <input type="text" placeholder="Search" id="search" />
+          <input
+            onkeyup="searchData(this.value)"
+            type="text"
+            placeholder="Search By Title"
+            id="search"
+          />
 
           <!-- btn-search -->
           <div class="btn-search">
-            <button id="search-title">Search By Title</button>
-            <button id="search-category">Search By Category</button>
+            <button onclick="getSearchMood(this.id)" id="search-title">
+              Search By Title
+            </button>
+            <button onclick="getSearchMood(this.id)" id="search-category">
+              Search By Category
+            </button>
           </div>
         </div>
         <div id="Delete-All"></div>

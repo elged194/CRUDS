@@ -63,14 +63,14 @@ if (localStorage.prodact != null) {
 sub.onclick = () => {
   // Create a new product object with input values.
   let newProw = {
-    title: title.value,
+    title: title.value.toLowerCase(),
     price: price.value,
     texes: texes.value,
     ads: ads.value,
     discount: discount.value,
     total: total.innerHTML,
     count: count.value,
-    category: category.value,
+    category: category.value.toLowerCase(),
   };
 
   // mood
@@ -193,6 +193,66 @@ function updateData(i) {
 
   scroll({
     top: 0,
+    left: 0,
     behavior: "smooth",
   });
+}
+
+// search
+let searchMood = "title";
+function getSearchMood(id) {
+  let search = document.getElementById("search");
+
+  if (id == "search-title") {
+    searchMood = "title";
+  } else {
+    searchMood = "category";
+  }
+  search.placeholder = " Search By " + searchMood;
+  search.focus();
+  search.value = "";
+  showData();
+}
+
+function searchData(value) {
+  let table = "";
+  for (let i = 0; i < dataPro.length; i++) {
+    if (searchMood == "title") {
+      if (dataPro[i].title.includes(value.toLowerCase())) {
+        table += `
+        <tr>
+            <td>${i}</td>
+            <td>${dataPro[i].title}</td>
+            <td>${dataPro[i].price}</td>
+            <td>${dataPro[i].texes}</td>
+            <td>${dataPro[i].ads}</td>
+            <td>${dataPro[i].discount}</td>
+            <td>${dataPro[i].total}</td>
+            <td>${dataPro[i].category}</td>
+            <td><button onclick="updateData(${i})" id="update">update</button></td>
+            <td><button onclick="deleteData(${i})" id="delete">delete</button></td>
+        </tr>
+      `;
+      }
+    } else {
+      if (dataPro[i].category.includes(value.toLowerCase())) {
+        table += `
+        <tr>
+            <td>${i}</td>
+            <td>${dataPro[i].title}</td>
+            <td>${dataPro[i].price}</td>
+            <td>${dataPro[i].texes}</td>
+            <td>${dataPro[i].ads}</td>
+            <td>${dataPro[i].discount}</td>
+            <td>${dataPro[i].total}</td>
+            <td>${dataPro[i].category}</td>
+            <td><button onclick="updateData(${i})" id="update">update</button></td>
+            <td><button onclick="deleteData(${i})" id="delete">delete</button></td>
+        </tr>
+      `;
+      }
+    }
+  }
+  // Set the inner HTML of the 'tbody' element to the generated table.
+  document.getElementById("tbody").innerHTML = table;
 }
