@@ -25,12 +25,9 @@ let sub = document.getElementById("sub");
 
 let mood = "create";
 let tmp;
-
 // -------- inputs -----------
 
-// get total
-// Calculates and displays the total based on input values.
-
+// ------------------ get total------------------------
 function getTotal() {
   if (price.value != "") {
     // Calculate the result by adding price, taxes, and ads, and subtracting the discount.
@@ -47,19 +44,16 @@ function getTotal() {
   }
 }
 
-// Create a new product and save it to local storage.
-
 // Define an array to store product data.
 let dataPro;
-// Check if there is any existing data in local storage, if yes, parse and assign it to 'dataPro', otherwise, initialize an empty array.
+// Create a new product and save it to local storage.
 if (localStorage.prodact != null) {
   dataPro = JSON.parse(localStorage.prodact);
 } else {
   dataPro = [];
 }
 
-// onclick create
-// When the button is clicked, create a new product, save it to local storage, clear input fields, and update the displayed table.
+// -------------------- onclick create ------------------------
 sub.onclick = () => {
   // Create a new product object with input values.
   let newProw = {
@@ -73,32 +67,36 @@ sub.onclick = () => {
     category: category.value.toLowerCase(),
   };
 
-  // mood
-  if (mood === "create") {
-    // count
-    if (newProw.count > 1) {
-      for (let i = 0; i < newProw.count; i++) {
+  // clean data
+  if (title.value != "" && price.value != "" && newProw.count < 100) {
+    // Add the new product to the products array.
+    // mood = create
+    if (mood === "create") {
+      // count
+      if (newProw.count > 1) {
+        for (let i = 0; i < newProw.count; i++) {
+          // Add the new product object to the 'dataPro' array.
+          dataPro.push(newProw);
+        }
+      } else {
+        // يطبعلي منتج واحد بس
         // Add the new product object to the 'dataPro' array.
         dataPro.push(newProw);
       }
     } else {
-      // يطبعلي منتج واحد بس
-      // Add the new product object to the 'dataPro' array.
-      dataPro.push(newProw);
+      dataPro[tmp] = newProw;
+      mood = "create";
+      sub.innerHTML = "Create";
+      count.style.display = "block";
+      category.style.width = "49.6%";
     }
-  } else {
-    dataPro[tmp] = newProw;
-    mood = "create";
-    sub.innerHTML = "Create";
-    count.style.display = "block";
-    category.style.width = "49.6%";
+
+    // Clear input fields.
+    clearData();
   }
 
   // Save or update the 'dataPro' array in local storage.
   localStorage.setItem("prodact", JSON.stringify(dataPro));
-
-  // Clear input fields.
-  clearData();
 
   // Update the displayed table.
   showData();
@@ -129,7 +127,7 @@ function showData() {
   for (let i = 0; i < dataPro.length; i++) {
     table += `
       <tr>
-          <td>${i}</td>
+          <td>${i + 1}</td>
           <td>${dataPro[i].title}</td>
           <td>${dataPro[i].price}</td>
           <td>${dataPro[i].texes}</td>
@@ -214,6 +212,7 @@ function getSearchMood(id) {
   showData();
 }
 
+// search
 function searchData(value) {
   let table = "";
   for (let i = 0; i < dataPro.length; i++) {
