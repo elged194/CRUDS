@@ -1,0 +1,48 @@
+@media only screen and (max-width: 768px) {
+  .price small {
+    padding: 8.3px 2px;
+    border-radius: 2px;
+  }
+}
+@media only screen and (max-width: 425px) {
+  .price {
+    display: block;
+  }
+  .price input {
+    width: 49.3%;
+  }
+  .price small {
+    padding: 3px 40.5%;
+    border-radius: 2px;
+  }
+  .inputs #count,
+  .inputs #category {
+    width: 49.3%;
+  }
+  .outputs table {
+    overflow: scroll;
+  }
+}
+@media only screen and (max-width: 375px) {
+  .price small {
+    padding: 3px 39.1%;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .price input {
+    width: 100%;
+  }
+  .price small {
+    padding: 3px 37%;
+  }
+  .inputs #count,
+  .inputs #category {
+    width: 100%;
+  }
+  .outputs button {
+    width: 100%;
+  }
+  .btn-search {
+    display: block;
+  }
+}

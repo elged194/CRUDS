@@ -1,0 +1,108 @@
+body {
+  font-family: system-ui;
+}
+button {
+  width: 100%;
+  border: none;
+  padding: 10px;
+  border-radius: 5px !important;
+  margin: 5px 0 !important;
+  font-weight: bold;
+  transition: all 1s;
+}
+button:hover {
+  color: #fff;
+  background-color: #adb5bd;
+  letter-spacing: 1px;
+}
+
+input {
+  padding: 5px;
+  margin: 4px 0 !important;
+}
+input:focus-visible {
+  outline: auto #adb5bd 1px !important;
+}
+/* ------------------------ */
+
+/* head */
+.head {
+  text-align: center;
+  margin: 10px 0;
+}
+
+/* inputs */
+.inputs #title {
+  width: 100%;
+}
+.inputs #count,
+.inputs #category {
+  width: 49.6%;
+}
+.count-category {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.price input {
+  width: 21.6%;
+}
+.price small {
+  background-color: #adb5bd;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 5px;
+}
+.price #total::before {
+  content: "TOTAL: ";
+}
+
+/* outputs */
+.outputs input {
+  width: 100%;
+}
+.outputs button {
+  width: 49%;
+}
+.btn-search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.outputs table {
+  width: 100%;
+  text-align: center;
+  margin: 40px 0;
+}
+.outputs table button {
+  width: -webkit-fill-available;
+}
+.outputs table button:hover {
+  letter-spacing: 0px;
+}
+.outputs table th {
+  text-transform: uppercase;
+}
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
+  padding: 0 !important;
+}
+
+th,
+td {
+  padding: 5px !important;
+}
+
+#Delete-All button {
+  width: 100%;
+}

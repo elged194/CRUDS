@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRUDS</title>
+    <!-- ------------------------------------------------------------------ -->
+    <!-- Style -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- responsive -->
+    <link rel="stylesheet" href="css/responsive.css" />
+    <!-- ------------------------------------------------------------------ -->
+  </head>
+  <body>
+    <div class="container CRUDS">
+      <!-- head -->
+      <div class="head">
+        <h2>CRUDS</h2>
+        <p>PRODUCT MANAGEMENT SYSTEM</p>
+      </div>
+
+      <!-- inputs -->
+      <div class="inputs">
+        <input type="text" id="title" placeholder="title" />
+
+        <!-- price -->
+        <div class="price">
+          <input
+            onkeyup="getTotal()"
+            type="number"
+            id="price"
+            placeholder="Price"
+          />
+          <input
+            onkeyup="getTotal()"
+            type="number"
+            id="texes"
+            placeholder="texes"
+          />
+          <input
+            onkeyup="getTotal()"
+            type="number"
+            id="ads"
+            placeholder="ADS"
+          />
+          <input
+            onkeyup="getTotal()"
+            type="number"
+            id="discount"
+            placeholder="discount"
+          />
+          <small id="total"></small>
+        </div>
+        <div class="count-category">
+          <input type="number" id="count" placeholder="count" />
+          <input type="text" id="category" placeholder="category" />
+        </div>
+        <button id="sub">Create</button>
+      </div>
+
+      <!-- outputs -->
+      <div class="outputs">
+        <!-- search-Blok -->
+        <div class="search-Blok">
+          <input
+            onkeyup="searchData(this.value)"
+            type="text"
+            placeholder="Search By Title"
+            id="search"
+          />
+
+          <!-- btn-search -->
+          <div class="btn-search">
+            <button onclick="getSearchMood(this.id)" id="search-title">
+              Search By Title
+            </button>
+            <button onclick="getSearchMood(this.id)" id="search-category">
+              Search By Category
+            </button>
+          </div>
+        </div>
+        <div id="Delete-All"></div>
+        <table>
+          <tr>
+            <th>id</th>
+            <th>title</th>
+            <th>price</th>
+            <th>taxes</th>
+            <th>ads</th>
+            <th>discount</th>
+            <th>total</th>
+            <th>category</th>
+            <th>update</th>
+            <th>delete</th>
+          </tr>
+
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ------------------------------------------------------------------ -->
+    <script src="js/activ.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
